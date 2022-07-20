@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Clash Display', sans-serif;
+}
+
+main {
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.phoenie-form h4 {
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.phoenie-desc {
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+form .txt_field {
+  position: relative;
+  border-bottom: 1px solid black;
+  margin: 3rem 0;
+}
+
+form .password {
+  margin: 0;
+}
+
+.txt_field input {
+  width: 100%;
+  padding: 0 0px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+  font-family: 'Clash Display', sans-serif;
+}
+
+.txt_field label {
+  position: absolute;
+  font-weight: 400;
+  top: 50%;
+  left: 0px;
+  color: black;
+  transform: translateY(-200%);
+  font-size: 19px;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.phone-no {
+  display: flex;
+}
+
+.phone-no input{
+  margin-left: 15px;
+}
+
+.submit {
+  background: black;
+  display: block;
+  font-size: 1.5rem;
+  font-family: 'Clash Display', sans-serif;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.submit a {
+  color: white;
+  text-decoration: none;
+}
+
+.submit a:hover {
+  cursor: pointer;
+}
+
+.submit {
+  position: relative;
+}
+
+.phone-no select {
+  
+  background: none;
+  font-family: 'Clash Display', sans-serif;
+  border: none;
+  outline: none;
+  font-size: 1.0rem;
+}
+
+::placeholder {
+  font-family: 'Clash Display', sans-serif;
+}

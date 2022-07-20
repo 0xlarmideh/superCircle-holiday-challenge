@@ -4,11 +4,11 @@ function startApp() {
     // so create and use/call additional functions from here
   
     // pls remove the below and make some magic in here!
-    console.log('make magic in here!');
+    console.log('SHEEEEEESH!!');
   
     const header = document.querySelector('h2');
     if(header) {
-      header.textContent = 'make some magic here!!';
+      header.textContent = 'SHEEEEEESH!!';
     }
   };
   

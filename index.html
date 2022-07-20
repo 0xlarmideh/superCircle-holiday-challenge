@@ -1,16 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name of chosen challenge</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,700,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Super-Circle_Phoenie</title>
 
-    <link rel="stylesheet" href="style.css">
 </head>
+
+
 <body>
-    
-    <h2>make some magic here!!</h2>
+  <nav class="nav">
+    <div class="back-icon"><i class="fa-light fa-angles-left"></i></div> 
+  <main>
+    <section class="phoenie-form">
+      <h4>Super-Circle Phoenie App...</h4>
+      <h4>Feel the magic!</h4>
+      <p class="phoenie-desc">Use the program to determine network provider of a phone number</p>
+      <div class="contact-form">
+        <form method="post">
+          <div class="txt_field">
+            <input type="text" placeholder="Full name" required>
+            <span></span>
+            <label>Full Name</label>
+          </div>
+          <div class="txt_field">
+            <input type="text" placeholder="Email" required>
+            <span></span>
+            <label>Email Address</label>
+          </div>
+          <div class="txt_field password">
+            <input type="password" placeholder="Password" required>
+            <span></span>
+            <label>Password</label>
+          </div>
+          <p>Password must not be less than <strong>8 characters.</strong></p>
+          <div class="txt_field">
+            <div class="phone-no">
+              <select name="Country Code" id="country_code">
+              <option value="nigeria-code">+234</option>
+              <option value="ghana-code">+221</option>
+            </select>
+            <input type="text" placeholder="phone no" required>
+            </div>
+            <span></span>
+            <label>Phone Number</label>
+          </div>
+          <div class="submit"><a href="#">Submit</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
 
     <!-- // ============= EEND DO NOT EDIT ============== // -->
     <script src="index.mjs" type="module"></script>
