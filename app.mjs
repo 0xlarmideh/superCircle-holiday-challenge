@@ -3,14 +3,33 @@ const strongPassLetters = new RegExp("^(?=.*[a-z]|[A-Z])"),
       strongPassCharacters = new RegExp("^(?=.*[!@#\$%\^&\*])"),
       passwordInput = document.querySelector("#password"),
       phoneNoInput = document.querySelector("#phone-number"),
-      carrierLogo = document.querySelector(".carrier-logo");
+      carrierLogo = document.querySelector(".carrier-logo"),
+      boldAll = document.querySelector(".bold-all"),
+      boldLetter = document.querySelector(".bold-letter"),
+      boldNumber = document.querySelector(".bold-number"),
+      boldSymbol = document.querySelector(".bold-symbol");
 
 function startApp() {
     phoneNoInput.addEventListener("keyup", phoneNumberCheck)
+    passwordInput.addEventListener("keyup", passwordCheck)
   };
 
-function passwordCheck() {
-  
+function passwordCheck(e) {
+  const passInput = e.target.value;
+  testCharacters(strongPassLetters, boldLetter, passInput)
+  testCharacters(strongPassNumbers, boldNumber, passInput)
+  testCharacters(strongPassCharacters, boldSymbol, passInput)
+}
+
+function testCharacters(x, y, z) {
+  if(x.test(z)){
+    passwordStyleChange(y)
+  }
+}
+
+function passwordStyleChange(name) {
+  name.style.color = "green";
+  name.style.textDecoration = 'line-through';
 }
 
 function phoneNumberCheck(e) {
@@ -25,6 +44,8 @@ function phoneNumberCheck(e) {
     alert("Please enter only numbers")
   }
 }
+
+
 
 
   
