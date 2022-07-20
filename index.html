@@ -32,18 +32,22 @@
             <label>Email Address</label>
           </div>
           <div class="txt_field password">
-            <input type="password" placeholder="Password" required>
+            <input id="password" type="password" placeholder="Password" required>
             <span></span>
             <label>Password</label>
           </div>
-          <p>Password must not be less than <strong>8 characters.</strong></p>
+          <p>Password must contain at least <span class="bold">8 characters</span> including <span class="bold">a letter</span>, <span class="bold">a number</span> and <span class="bold">a symbol</span>.</p>
           <div class="txt_field">
             <div class="phone-no">
               <select name="Country Code" id="country_code">
-              <option value="nigeria-code">+234</option>
-              <option value="ghana-code">+221</option>
-            </select>
-            <input type="text" placeholder="phone no" required>
+                <option value="nigeria-code">+234</option>
+                <option value="ghana-code">+221</option>
+              </select>
+              <input id="phone-number" type="text" placeholder="phone no" required>
+              <div class="carrier-logo"><img src="./carrier-logos/mtn-logo.jpeg" alt=""></div>
+              <div class="carrier-logo"><img src="./carrier-logos/glo-logo.jpg" alt=""></div>
+              <div class="carrier-logo"><img src="./carrier-logos/9mobile-logo.png" alt=""></div>
+              <div class="carrier-logo"><img src="./carrier-logos/airtel-logo.jpeg" alt=""></div>
             </div>
             <span></span>
             <label>Phone Number</label>

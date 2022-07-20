@@ -10,7 +10,7 @@ body {
 
 main {
   margin-top: 60px;
-  padding: 20px;
+  padding: 0 40px;
 }
 
 .phoenie-form h4 {
@@ -22,6 +22,18 @@ main {
 .phoenie-desc {
   margin: 15px 0;
   font-size: 14px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.carrier-logo {
+  display: none;
+}
+
+.carrier-logo img {
+  width: 36px;
 }
 
 form .txt_field {
