@@ -69,8 +69,15 @@ form .password {
   transition: .5s;
 }
 
-.phone-no {
+.phone-no, .password {
   display: flex;
+}
+
+.checkmark {
+  color: green;
+  font-weight: 600;
+  font-size: 20px;
+  transform: translateY(10px);
 }
 
 .phone-no input{
