@@ -1,72 +1,101 @@
-const strongPassLetters = new RegExp("^(?=.*[a-z]|[A-Z])"),
-      strongPassNumbers = new RegExp("^(?=.*[0-9])"),
-      strongPassCharacters = new RegExp("^(?=.*[!@#\$%\^&\*])"),
-      strongAll = new RegExp("^(?=.{8,})"),
-      passwordInput = document.querySelector("#password"),
-      phoneNoInput = document.querySelector("#phone-number"),
-      carrierLogo = document.querySelector(".carrier-logo"),
-      checkmark = document.querySelector(".checkmark"),
-      boldAll = document.querySelector(".bold-all"),
-      boldLetter = document.querySelector(".bold-letter"),
-      boldNumber = document.querySelector(".bold-number"),
-      boldSymbol = document.querySelector(".bold-symbol");
+// Variables to test for password valiadtion
 
+const strongPassLetters = new RegExp("(?=.*[a-z]|[A-Z])"),
+  strongPassNumbers = new RegExp("(?=.*[0-9])"),
+  strongPassCharacters = new RegExp("(?=.*[!@#\$%\^&\*])"),
+  passPassed = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+  strongAll = new RegExp("(?=.{8,})"),
+  emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+  mtnRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([36]{1}))|([8][1]([0346]{1})))\d{7})$/g,
+  etisalatRegex = /^(\+?([\d]{1,3})?[0]?((([8-9]{1})[0]([9]{1}))|(([9]{1})[0]([8]{1}))|([8][1]([78]{1})))\d{7})$/g,
+  airtelRegex = /^(\+?([\d]{1,3})?[0]?((([8-9]{1})[0]([2]{1}))|(([7-8]{1})[0]([8]{1}))|(([9]{1})[0]([17]{1}))|([8][1]([2]{1}))|([7][0]([1]{1})))\d{7})$/g,
+  gloRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([57]{1}))|([81]([15]{1})))\d{7})$/g,
+  passwordInput = document.querySelector("#password"),
+  phoneNoInput = document.querySelector("#phone-number"),
+  emailInput = document.querySelector("#email"),
+  carrierLogo = document.querySelector(".carrier-logo"),
+  emailCheck = document.querySelector("#email-check"),
+  passCheck = document.querySelector("#pass-check"),
+  boldAll = document.querySelector(".bold-all"),
+  boldLetter = document.querySelector(".bold-letter"),
+  boldNumber = document.querySelector(".bold-number"),
+  boldSymbol = document.querySelector(".bold-symbol");
+
+// NetworkProviders Logo Directories
+
+const mtnLogo = '<img src="./carrier-logos/mtn-logo.jpeg" alt="MTN">',
+  airtelLogo = '<img src="./carrier-logos/airtel-logo.jpeg" alt="AIRTEL">',
+  gloLogo = '<img src="./carrier-logos/glo-logo.jpg" alt="GLO">',
+  etisalatLogo = '<img src="./carrier-logos/9mobile-logo.png" alt="9MOBILE">';
+
+
+// This function loads all event listeners and calls functions
 function startApp() {
-    phoneNoInput.addEventListener("keyup", phoneNumberCheck)
-    passwordInput.addEventListener("keyup", passwordCheck)
-  };
+  phoneNoInput.addEventListener("keyup", testNumber);
+  passwordInput.addEventListener("keyup", passwordCheck);
+  emailInput.addEventListener("keyup", emailTest);
+};
 
-checkmark.style.display = "none"
+function emailTest(e) {
+  const emailInput = e.target.value;
+  checkmarkGreen(emailRegex, emailInput, emailCheck);
+}
 
+function testNumber(e) {
+  const numInput = e.target.value;
+  phoneNumberCheck(etisalatRegex, numInput, etisalatLogo);
+  phoneNumberCheck(mtnRegex, numInput, mtnLogo);
+  phoneNumberCheck(airtelRegex, numInput, airtelLogo);
+  phoneNumberCheck(gloRegex, numInput, gloLogo);
+}
+
+// Function to track password input and test each password parameter
 function passwordCheck(e) {
   const passInput = e.target.value;
   testCharacters(strongPassLetters, boldLetter, passInput);
   testCharacters(strongPassNumbers, boldNumber, passInput);
   testCharacters(strongPassCharacters, boldSymbol, passInput);
-  testAll(passInput);
+  testCharacters(strongAll, boldAll, passInput);
+  checkmarkGreen(passPassed, passInput, passCheck);
 }
 
+// function to check if certain parameters have been met in the password validation and style.
 function testCharacters(x, name, z) {
-  if(x.test(z)){
+  if (x.test(z)) {
     passwordStyleChange(name, "green", "line-through")
-  }else{
+  } else {
     passwordStyleChange(name, "black", "none")
   }
 }
 
-function testAll(inp) {
-  if(strongAll.test(inp)){
-    passwordStyleChange(boldAll, "green", "line-through");
-    checkmark.style.display = "block"
-  }else{
-    passwordStyleChange(boldAll, "black", "none");
-    checkmark.style.display = "none"
-  }
-}
+// function to check if all 8 characters have been met and show a checkmark
 
+
+// function that hosts the style to change into once parameter is met
 function passwordStyleChange(name, color, style) {
   name.style.color = color;
   name.style.textDecoration = style;
 }
 
-function phoneNumberCheck(e) {
-  // const networkCodes = {
-  //   mtn: ["0803", "0806", "0814", "0810", "0813", "0814", "0816", "0703", "0706", "0903", "0906"],
-  //   etisalat: ["0809", "0817", "0818", "0908", "0909"],
-  //   glo: ["0805", "0807", "0811", "0815", "0705", "0905"],
-  //   airtel: ["0802", "0808", "0812", "0708", "0701", "0902", "0901", "0907"]};
-  const numInput = e.target.value;
-  const stringedInput = String(numInput);
-  if (true){
-    console.log(stringedInput)
-  }
 
-  
-  if(isNaN(numInput)){
-    alert("Please enter only numbers")
+function phoneNumberCheck(regEx, inputValue, logoName) {
+
+  if (regEx.test(inputValue)) {
+    carrierLogo.innerHTML = logoName;
+    carrierLogo.style.display = "block";
+  } else {
+    carrierLogo.style.display = "none"
   }
 }
-  
-  // ======= DO NOT EDIT ============== //
-  export default startApp;
+
+function checkmarkGreen(regexName, input, idName) {
+  if (regexName.test(input)) {
+    idName.style.display = "block"
+  } else {
+    idName.style.display = "none"
+  }
+}
+
+// ======= DO NOT EDIT ============== //
+export default startApp;
   // ======= EEND DO NOT EDIT ========= //

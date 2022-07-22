@@ -28,9 +28,7 @@ main {
   font-weight: 600;
 }
 
-.carrier-logo {
-  display: none;
-}
+
 
 .carrier-logo img {
   width: 36px;
@@ -69,11 +67,12 @@ form .password {
   transition: .5s;
 }
 
-.phone-no, .password {
+.phone-no, .password, .email-input {
   display: flex;
 }
 
 .checkmark {
+  display: none;
   color: green;
   font-weight: 600;
   font-size: 20px;

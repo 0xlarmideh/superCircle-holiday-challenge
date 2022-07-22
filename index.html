@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,55 +14,57 @@
 
 <body>
   <nav class="nav">
-    <div class="back-icon"><i class="fa-light fa-angles-left"></i></div> 
-  <main>
-    <section class="phoenie-form">
-      <h4>Super-Circle Phoenie App...</h4>
-      <h4>Feel the magic!</h4>
-      <p class="phoenie-desc">Use the program to determine network provider of a phone number</p>
-      <div class="contact-form">
-        <form method="post">
-          <div class="txt_field">
-            <input type="text" placeholder="Full name" required>
-            <span></span>
-            <label>Full Name</label>
-          </div>
-          <div class="txt_field">
-            <input type="text" placeholder="Email" required>
-            <span></span>
-            <label>Email Address</label>
-          </div>
-          <div class="txt_field password">
-            <input id="password" type="password" placeholder="Password" required>
-            <div class="checkmark">✓</div>
-            <span></span>
-            <label>Password</label>
-          </div>
-          <p>Password must contain at least <span class="bold bold-all">8 characters</span> including <span class="bold bold-letter">a letter</span>, <span class="bold bold-number">a number</span> and <span class="bold bold-symbol">a symbol</span>.</p>
-          <div class="txt_field">
-            <div class="phone-no">
-              <select name="Country Code" id="country_code">
-                <option value="nigeria-code">+234</option>
-                <option value="ghana-code">+221</option>
-              </select>
-              <input id="phone-number" type="text" placeholder="phone no" required>
-              <div class="carrier-logo"><img src="./carrier-logos/mtn-logo.jpeg" alt=""></div>
-              <div class="carrier-logo"><img src="./carrier-logos/glo-logo.jpg" alt=""></div>
-              <div class="carrier-logo"><img src="./carrier-logos/9mobile-logo.png" alt=""></div>
-              <div class="carrier-logo"><img src="./carrier-logos/airtel-logo.jpeg" alt=""></div>
+    <div class="back-icon"><i class="fa-light fa-angles-left"></i></div>
+    <main>
+      <section class="phoenie-form">
+        <h4>Super-Circle Phoenie App...</h4>
+        <h4>Feel the magic!</h4>
+        <p class="phoenie-desc">Use the program to determine network provider of a phone number</p>
+        <div class="contact-form">
+          <form method="post">
+            <div class="txt_field">
+              <input type="text" placeholder="Full name" required>
+              <span></span>
+              <label>Full Name</label>
             </div>
-            <span></span>
-            <label>Phone Number</label>
-          </div>
-          <div class="submit"><a href="#">Submit</a>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
+            <div class="txt_field email-input">
+              <input id="email" type="text" placeholder="Email" required>
+              <div class="checkmark" id="email-check">✓</div>
+              <span></span>
+              <label>Email Address</label>
+            </div>
+            <div class="txt_field password">
+              <input id="password" type="password" placeholder="Password" required>
+              <div class="checkmark" id="pass-check">✓</div>
+              <span></span>
+              <label>Password</label>
+            </div>
+            <p>Password must contain at least <span class="bold bold-all">8 characters</span> including <span
+                class="bold bold-letter">a letter</span>, <span class="bold bold-number">a number</span> and <span
+                class="bold bold-symbol">a symbol</span>.</p>
+            <div class="txt_field">
+              <div class="phone-no">
+                <select name="Country Code" id="country_code">
+                  <option value="nigeria-code">+234</option>
+                  <option value="ghana-code">+221</option>
+                </select>
+                <input id="phone-number" type="text" placeholder="phone no" required>
+                <div class="carrier-logo" id="mtn"></div>
+
+              </div>
+              <span></span>
+              <label>Phone Number</label>
+            </div>
+            <div class="submit"><a href="#">Submit</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
 
     <!-- // ============= EEND DO NOT EDIT ============== // -->
     <script src="index.mjs" type="module"></script>
     <!-- // ============= EEND DO NOT EDIT ============== // -->
 </body>
+
 </html>
