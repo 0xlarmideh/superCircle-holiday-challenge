@@ -43,10 +43,13 @@ function emailTest(e) {
 
 function testNumber(e) {
   const numInput = e.target.value;
-  phoneNumberCheck(etisalatRegex, numInput, etisalatLogo);
-  phoneNumberCheck(mtnRegex, numInput, mtnLogo);
-  phoneNumberCheck(airtelRegex, numInput, airtelLogo);
-  phoneNumberCheck(gloRegex, numInput, gloLogo);
+  const carrierDetails = [[etisalatRegex, numInput, etisalatLogo], [mtnRegex, numInput, mtnLogo], [airtelRegex, numInput, airtelLogo], [gloRegex, numInput, gloLogo]]
+  for (let i = 0; i < carrierDetails.length; i++) {
+    let carrier = carrierDetails[i]
+    if (phoneNumberCheck(...carrier)) {
+      break
+    };
+  }
 }
 
 // Function to track password input and test each password parameter
@@ -68,8 +71,6 @@ function testCharacters(x, name, z) {
   }
 }
 
-// function to check if all 8 characters have been met and show a checkmark
-
 
 // function that hosts the style to change into once parameter is met
 function passwordStyleChange(name, color, style) {
@@ -79,14 +80,15 @@ function passwordStyleChange(name, color, style) {
 
 
 function phoneNumberCheck(regEx, inputValue, logoName) {
-
   if (regEx.test(inputValue)) {
     carrierLogo.innerHTML = logoName;
-    carrierLogo.style.display = "block";
+    return true
   } else {
-    carrierLogo.style.display = "none"
+    carrierLogo.innerHTML = "";
+    return false
   }
 }
+
 
 function checkmarkGreen(regexName, input, idName) {
   if (regexName.test(input)) {
