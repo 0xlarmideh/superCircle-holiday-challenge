@@ -42,13 +42,24 @@
             <p>Password must contain at least <span class="bold bold-all">8 characters</span> including <span
                 class="bold bold-letter">a letter</span>, <span class="bold bold-number">a number</span> and <span
                 class="bold bold-symbol">a symbol</span>.</p>
+
             <div class="txt_field phone-no">
-              <input id="phone-number" type="text" placeholder="phone no" required>
+              <input id="phone-number" type="text" placeholder="Phone number" required>
               <div class="carrier-logo" id="mtn">
               </div>
               <span></span>
               <label>Phone Number</label>
             </div>
+
+            <!-- Restricted phone number field -->
+            <div class="txt_field phone-no">
+              <input id="mtn-num" type="text" placeholder="Only Enter an MTN number here..." required>
+              <div class="carrier-logo" id="mtn">
+              </div>
+              <span></span>
+              <label>MTN Number Field</label>
+            </div>
+
             <div class="submit"><a href="#">Submit</a>
             </div>
           </form>
