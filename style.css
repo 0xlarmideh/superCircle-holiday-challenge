@@ -30,7 +30,7 @@ main {
 
 
 
-.carrier-logo img {
+.carrier-logo img, .mtn-restrict img {
   width: 36px;
 }
 
@@ -67,7 +67,7 @@ form .password {
   transition: .5s;
 }
 
-.phone-no, .password, .email-input {
+.phone-no, .password, .email-input, .mtn-no {
   display: flex;
 }
 
@@ -77,10 +77,6 @@ form .password {
   font-weight: 600;
   font-size: 20px;
   transform: translateY(10px);
-}
-
-.phone-no input{
-  margin-left: 15px;
 }
 
 .submit {

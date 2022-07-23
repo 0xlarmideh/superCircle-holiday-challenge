@@ -10,10 +10,11 @@ const strongPassLetters = new RegExp("(?=.*[a-z]|[A-Z])"),
   etisalatRegex = /^(\+?([\d]{1,3})?[0]?((([8-9]{1})[0]([9]{1}))|(([9]{1})[0]([8]{1}))|([8][1]([78]{1})))\d{7})$/g,
   airtelRegex = /^(\+?([\d]{1,3})?[0]?((([8-9]{1})[0]([2]{1}))|(([7-8]{1})[0]([8]{1}))|(([9]{1})[0]([17]{1}))|([8][1]([2]{1}))|([7][0]([1]{1})))\d{7})$/g,
   gloRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([57]{1}))|([81]([15]{1})))\d{7})$/g,
-  // restrictedRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([36]{1}))|([8][1]([0346]{1})))\d{7})$/g,
+  restrictedRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([36]{1}))|([8][1]([0346]{1})))\d{7})$/g,
   passwordInput = document.querySelector("#password"),
+  mtnRestrict = document.querySelector(".mtn-restrict"),
   phoneNoInput = document.querySelector("#phone-number"),
-  // mtnNumInput = document.querySelector("#mtn-num"),
+  mtnNumInput = document.querySelector("#mtn-num"),
   emailInput = document.querySelector("#email"),
   carrierLogo = document.querySelector(".carrier-logo"),
   emailCheck = document.querySelector("#email-check"),
@@ -34,7 +35,7 @@ const mtnLogo = '<img src="./carrier-logos/mtn-logo.jpeg" alt="MTN">',
 // This function loads all event listeners and calls functions
 function startApp() {
   phoneNoInput.addEventListener("keyup", testNumber);
-  // mtnNumInput.addEventListener("keyup", testMtnNumber);
+  mtnNumInput.addEventListener("keyup", testMtnNumber);
   passwordInput.addEventListener("keyup", passwordCheck);
   emailInput.addEventListener("keyup", emailTest);
 };
@@ -42,6 +43,40 @@ function startApp() {
 function emailTest(e) {
   const emailInput = e.target.value;
   checkmarkGreen(emailRegex, emailInput, emailCheck);
+}
+
+// Function to track password input and test each password parameter
+function passwordCheck(e) {
+  const passInput = e.target.value;
+  testCharacters(strongPassLetters, boldLetter, passInput);
+  testCharacters(strongPassNumbers, boldNumber, passInput);
+  testCharacters(strongPassCharacters, boldSymbol, passInput);
+  testCharacters(strongAll, boldAll, passInput);
+  checkmarkGreen(passPassed, passInput, passCheck);
+}
+
+// function that hosts the style to change into once parameter is met
+function passwordStyleChange(name, color, style) {
+  name.style.color = color;
+  name.style.textDecoration = style;
+}
+
+function checkmarkGreen(regexName, input, idName) {
+  if (regexName.test(input)) {
+    idName.style.display = "block"
+  } else {
+    idName.style.display = "none"
+  }
+}
+
+function phoneNumberCheck(regEx, inputValue, logoName) {
+  if (regEx.test(inputValue)) {
+    carrierLogo.innerHTML = logoName;
+    return true
+  } else {
+    carrierLogo.innerHTML = "";
+    return false
+  }
 }
 
 function testNumber(e) {
@@ -56,26 +91,15 @@ function testNumber(e) {
 }
 
 // Function to test if it's an MTN nuumber
-// function testMtnNumber(e) {
-//   const mtnNumberInput = e.target.value;
-//   if (regEx.test(inputValue) === restrictedRegex) {
-//     carrierLogo.innerHTML = logoName;
-//     return true
-//   } else {
-//     carrierLogo.innerHTML = "";
-//     return false
-//   }
-// }
-
-
-// Function to track password input and test each password parameter
-function passwordCheck(e) {
-  const passInput = e.target.value;
-  testCharacters(strongPassLetters, boldLetter, passInput);
-  testCharacters(strongPassNumbers, boldNumber, passInput);
-  testCharacters(strongPassCharacters, boldSymbol, passInput);
-  testCharacters(strongAll, boldAll, passInput);
-  checkmarkGreen(passPassed, passInput, passCheck);
+function testMtnNumber(e) {
+  const mtnNumberInput = e.target.value;
+  if (restrictedRegex.test(mtnNumberInput)) {
+    mtnRestrict.innerHTML = mtnLogo;
+    return true
+  } else {
+    mtnRestrict.innerHTML = "Invalid";
+    mtnRestrict.style.color = "red";
+  }
 }
 
 // function to check if certain parameters have been met in the password validation and style.
@@ -88,31 +112,6 @@ function testCharacters(x, name, z) {
 }
 
 
-// function that hosts the style to change into once parameter is met
-function passwordStyleChange(name, color, style) {
-  name.style.color = color;
-  name.style.textDecoration = style;
-}
-
-
-function phoneNumberCheck(regEx, inputValue, logoName) {
-  if (regEx.test(inputValue)) {
-    carrierLogo.innerHTML = logoName;
-    return true
-  } else {
-    carrierLogo.innerHTML = "";
-    return false
-  }
-}
-
-
-function checkmarkGreen(regexName, input, idName) {
-  if (regexName.test(input)) {
-    idName.style.display = "block"
-  } else {
-    idName.style.display = "none"
-  }
-}
 
 // ======= DO NOT EDIT ============== //
 export default startApp;
