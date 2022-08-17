@@ -10,7 +10,7 @@ body {
 
 main {
   margin-top: 60px;
-  padding: 0 40px;
+  padding: 20px 40px;
 }
 
 .phoenie-form h4 {
@@ -28,10 +28,9 @@ main {
   font-weight: 600;
 }
 
-
-
 .carrier-logo img, .mtn-restrict img {
   width: 36px;
+  border-radius: 50%;
 }
 
 form .txt_field {
@@ -69,6 +68,7 @@ form .password {
 
 .phone-no, .password, .email-input, .mtn-no {
   display: flex;
+  align-items: center;
 }
 
 .checkmark {

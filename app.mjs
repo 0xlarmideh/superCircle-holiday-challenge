@@ -7,9 +7,9 @@ const strongPassLetters = new RegExp("(?=.*[a-z]|[A-Z])"),
   strongAll = new RegExp("(?=.{8,})"),
   emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
   mtnRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([36]{1}))|([8][1]([0346]{1})))\d{7})$/g,
-  etisalatRegex = /^(\+?([\d]{1,3})?[0]?((([8-9]{1})[0]([9]{1}))|(([9]{1})[0]([8]{1}))|([8][1]([78]{1})))\d{7})$/g,
-  airtelRegex = /^(\+?([\d]{1,3})?[0]?((([8-9]{1})[0]([2]{1}))|(([7-8]{1})[0]([8]{1}))|(([9]{1})[0]([17]{1}))|([8][1]([2]{1}))|([7][0]([1]{1})))\d{7})$/g,
-  gloRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([57]{1}))|([81]([15]{1})))\d{7})$/g,
+  etisalatRegex = /^(\+?([\d]{1,3})?[0]?((([8-9]{1})[0]([9]))|(([9])[0]([8]))|([8][1]([78]{1})))\d{7})$/g,
+  airtelRegex = /^(\+?([\d]{1,3})?[0]?((([8-9]{1})[0]([2]))|(([7-8]{1})[0]([8]))|(([9]{1})[0]([17]{1}))|([8][1]([2]))|([7][0]([1])))\d{7})$/g,
+  gloRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([57]{1}))|(([8][1][1])|([8][1][5])))\d{7})$/g,
   restrictedRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([36]{1}))|([8][1]([0346]{1})))\d{7})$/g,
   passwordInput = document.querySelector("#password"),
   mtnRestrict = document.querySelector(".mtn-restrict"),
@@ -22,7 +22,8 @@ const strongPassLetters = new RegExp("(?=.*[a-z]|[A-Z])"),
   boldAll = document.querySelector(".bold-all"),
   boldLetter = document.querySelector(".bold-letter"),
   boldNumber = document.querySelector(".bold-number"),
-  boldSymbol = document.querySelector(".bold-symbol");
+  boldSymbol = document.querySelector(".bold-symbol"),
+  submitBtn = document.querySelector(".submit");
 
 // NetworkProviders Logo Directories
 
@@ -38,8 +39,10 @@ function startApp() {
   mtnNumInput.addEventListener("keyup", testMtnNumber);
   passwordInput.addEventListener("keyup", passwordCheck);
   emailInput.addEventListener("keyup", emailTest);
+  submitBtn.addEventListener("click", clearInputs)
 };
 
+// function to test email validation
 function emailTest(e) {
   const emailInput = e.target.value;
   checkmarkGreen(emailRegex, emailInput, emailCheck);
@@ -61,6 +64,7 @@ function passwordStyleChange(name, color, style) {
   name.style.textDecoration = style;
 }
 
+// function to place checkmark on validated fields
 function checkmarkGreen(regexName, input, idName) {
   if (regexName.test(input)) {
     idName.style.display = "block"
@@ -69,6 +73,7 @@ function checkmarkGreen(regexName, input, idName) {
   }
 }
 
+// Check for network provider
 function phoneNumberCheck(regEx, inputValue, logoName) {
   if (regEx.test(inputValue)) {
     carrierLogo.innerHTML = logoName;
@@ -95,23 +100,25 @@ function testMtnNumber(e) {
   const mtnNumberInput = e.target.value;
   if (restrictedRegex.test(mtnNumberInput)) {
     mtnRestrict.innerHTML = mtnLogo;
-    return true
   } else {
-    mtnRestrict.innerHTML = "Invalid";
+    mtnRestrict.innerHTML = '';
     mtnRestrict.style.color = "red";
   }
 }
 
 // function to check if certain parameters have been met in the password validation and style.
-function testCharacters(x, name, z) {
-  if (x.test(z)) {
-    passwordStyleChange(name, "green", "line-through")
+function testCharacters(regex, idName, input) {
+  if (regex.test(input)) {
+    passwordStyleChange(idName, "green", "line-through")
   } else {
-    passwordStyleChange(name, "black", "none")
+    passwordStyleChange(idName, "black", "none")
   }
 }
 
-
+// function to clear inputs
+function clearInputs(e){
+  document.querySelector(".form-details").reset();
+}
 
 // ======= DO NOT EDIT ============== //
 export default startApp;
