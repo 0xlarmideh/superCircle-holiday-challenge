@@ -11,6 +11,7 @@ const strongPassLetters = new RegExp("(?=.*[a-z]|[A-Z])"),
   airtelRegex = /^(\+?([\d]{1,3})?[0]?((([8-9]{1})[0]([2]))|(([7-8]{1})[0]([8]))|(([9]{1})[0]([17]{1}))|([8][1]([2]))|([7][0]([1])))\d{7})$/g,
   gloRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([57]{1}))|(([8][1][1])|([8][1][5])))\d{7})$/g,
   restrictedRegex = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([36]{1}))|([8][1]([0346]{1})))\d{7})$/g,
+  restrictedBeginning = /^(\+?([\d]{1,3})?[0]?((([7-9]{1})[0]([36]{1}))|([8][1]([0346]{1}))))$/,
   passwordInput = document.querySelector("#password"),
   mtnRestrict = document.querySelector(".mtn-restrict"),
   phoneNoInput = document.querySelector("#phone-number"),
@@ -100,9 +101,10 @@ function testMtnNumber(e) {
   const mtnNumberInput = e.target.value;
   if (restrictedRegex.test(mtnNumberInput)) {
     mtnRestrict.innerHTML = mtnLogo;
-  } else {
-    mtnRestrict.innerHTML = '';
-    mtnRestrict.style.color = "red";
+  }
+  else {
+    mtnRestrict.innerHTML = "Please input only MTN Number";
+    mtnRestrict.style.width = "300px"
   }
 }
 
@@ -116,7 +118,7 @@ function testCharacters(regex, idName, input) {
 }
 
 // function to clear inputs
-function clearInputs(e){
+function clearInputs(e) {
   document.querySelector(".form-details").reset();
 }
 

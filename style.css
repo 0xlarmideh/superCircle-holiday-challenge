@@ -71,6 +71,11 @@ form .password {
   align-items: center;
 }
 
+.mtn-restrict{
+  color: red;
+  font-weight: 500;
+  text-align: right;
+}
 .checkmark {
   display: none;
   color: green;
